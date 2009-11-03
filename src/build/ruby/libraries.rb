@@ -1,0 +1,1 @@
+SCALATEST_JAR = "org.scalatest:scalatest:jar:1.0"
