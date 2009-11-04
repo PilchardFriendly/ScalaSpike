@@ -1,5 +1,6 @@
 task :default => [:ci]
 
 task :ci do
-  system "buildr"
+  puts "Running buildr clean package"
+  puts %x{buildr clean package}
 end
