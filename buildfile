@@ -14,4 +14,4 @@ define "ScalaSpike" do
   define "Haml" do
     package :jar
   end
-end
+ end
