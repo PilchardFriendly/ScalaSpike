@@ -1,7 +1,9 @@
-
-
 require 'buildr'
+
+repositories.local = 'lib/maven/repository'
 require 'buildr/scala'
+repositories.remote = []
+
 
 require 'src/build/ruby/libraries.rb'
 
