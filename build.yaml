@@ -1,6 +1,6 @@
-#repositories:
-#  remote:
-#    - http://www.ibiblio.org/maven2
-#    - http://scala-tools.org/repo-releases
+repositories:
+  remote:
+    - http://www.ibiblio.org/maven2
+    - http://scala-tools.org/repo-releases
 
 scala.test: 1.0

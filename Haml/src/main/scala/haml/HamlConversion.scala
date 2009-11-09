@@ -23,7 +23,7 @@ object Template {
 }
 
 class Template(val source: String) {
-  import haml.Implicits._
+  import StringImplicits._
   import haml.Template._
 
   case class Expression(val indent: Int) {
@@ -40,9 +40,9 @@ class Template(val source: String) {
               override def render(inner: Stream[String]) = {
                 val indent = "  " repeat nestCount
                 val content = (text, inner) match {
-                  case (s: String, t:Stream[String]) if s.isEmpty && t.isEmpty =>
+                  case (s: String, Stream.empty) if s.isEmpty =>
                     List(indent,"<",tag,"/>").toStream
-                  case (s: String, t:Stream[String]) if t.isEmpty=>
+                  case (s: String, Stream.empty) =>
                     List(indent,"<",tag,">",text,"</",tag,">").toStream
                   case (s: String, t:Stream[String]) =>
                     List(indent,"<",tag,">",text,"\n").toStream.append(
@@ -97,23 +97,28 @@ class StringDuplicator(val s: String) {
   }
 }
 
-object Implicits {
+class Repetition(val count: Int) {
+  import StringImplicits._
+  def times(s: String) {
+    s repeat count
+  }
+}
+
+
+object StringImplicits {
   implicit def stringsCanBeDuplicated(s: String): StringDuplicator = {
     new StringDuplicator(s)
   }
 
+}
+object IntImplicits {
   implicit def repeatAWholeNumberOfTimes(i: Int): Repetition = {
     new Repetition(i)
 
   }
 }
 
-class Repetition(val count: Int) {
-  import Implicits._
-  def times(s: String) {
-    s repeat count
-  }
-}
+
 
 
 object HamlConversion {
