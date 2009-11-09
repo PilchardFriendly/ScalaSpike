@@ -57,7 +57,11 @@ class Template(val source: String) {
 
           }
           case "" => {
-            new Expression(0)
+            new Expression(0) {
+              override def render(inner: Stream[String]) = {
+                Stream.cons("\n", inner)
+              }
+            }
           }
           case line => throw new Exception("Failed to parse line %d '%s'".format(idx, line))
         }

@@ -1,28 +1,7 @@
 package haml
 
-import collection.mutable.Stack
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.Spec
-
-/**
- * Created by IntelliJ IDEA.
- * User: ndrew
- * Date: Oct 28, 2009
- * Time: 1:16:35 PM
- * To change this template use File | Settings | File Templates.
- */
-
-class StackSpec extends Spec with ShouldMatchers {
-  describe("A stack"){
-    describe("(when empty)"){
-      val stack = new Stack[int];
-
-      it("should be empty"){
-        stack should be ('empty)
-      }
-    }
-  }
-}
 
 class AHamlSpec extends Spec with ShouldMatchers
 {
@@ -70,7 +49,8 @@ class AHamlSpec extends Spec with ShouldMatchers
   %y
 """
       it( "should output as y element nested in an x"){
-        renderHaml(template) should be("""<x>
+        renderHaml(template) should be("""
+<x>
   <y/>
 </x>""")
       }
