@@ -1,9 +1,8 @@
 require 'buildr'
 
-repositories.local = 'lib/maven/repository'
+maven_repo = File.join(File.expand_path(File.dirname(__FILE__)), "lib", "maven", "repository")
+repositories.local = maven_repo
 require 'buildr/scala'
-repositories.remote = []
-
 
 require 'src/build/ruby/libraries.rb'
 
