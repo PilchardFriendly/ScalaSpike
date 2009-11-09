@@ -1,4 +1,5 @@
 .DS_Store
+lib/.DS_Store
 .idea/
 */reports
 */target
