@@ -31,7 +31,7 @@ module Buildr::Scala
                 # TODO: This should be name=>value pairs!
                 #ant.includes group_includes.join(" ") if group_includes
                 #ant.excludes group_excludes.join(" ") if group_excludes
-                (options[:properties] || []).each { |name, value| ant.property :name=>name, :value=>value }
+                (options[:properties] || []).each { |name, value| ant.config :name=>name, :value=>value }
               end
             end
 
